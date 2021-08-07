@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream-msg Example</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #dream {
+        margin:0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        top:50%;
+      }
+      #dream button {
+        margin: 0 20px;
+      }
+      .dream-btn {
+        font-size: 14px;
+        text-decoration: none;
+        padding: 6px 20px;
+        white-space: nowrap;
+        border-radius: 5px;
+        font-weight: 500;
+        display: inline-block;
+        cursor: pointer;
+        border: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        line-height: normal;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .dream-btn.cancel {
+        margin-right: 10px;
+        color: #525456;
+        background-color: transparent;
+        font-weight: 500;
+        transition: all 0.06s ease-out;
+      }
+
+      .dream-btn,
+      .dream-btn span{
+        position: relative;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .dream-btn.info {
+        background-color: #47d4cd;
+        color: #fefefe;
+      }
+      .dream-btn.success {
+        background-color: #9edc65;
+        color: #fefefe;
+      }
+      .dream-btn.warning {
+        background-color: #e5b442;
+        color: #fefefe;
+      }
+      .dream-btn.error {
+        background-color: #ec4141;
+        color: #fefefe;
+      }
+      .dream-btn.loading {
+         background-color: #7bb4e7;
+         color: #fefefe;
+       }
+      .dream-btn.close {
+        background-color: #676868;
+        color: #fefefe;
+      }
+
+      .dream-btn.ok::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        transition: all 0.12s ease-out;
+        background-color: transparent;
+      }
+      .dream-btn.ok:hover::before {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+      .dream-btn.ok:active::before {
+        transition: all 80ms ease-out;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+    </style>
+    <script src="dream-msg.min.js"></script>
+  </head>
+  <body>
+   
+    <div id="dream">
+      <button id="dream-info" class="dream-btn info">info</button>
+      <button id="dream-success" class="dream-btn success">success</button>
+      <button id="dream-warning" class="dream-btn warning">warning</button>
+      <button id="dream-error" class="dream-btn error">error</button>
+      <button id="dream-loading" class="dream-btn loading">loading</button>
+      <button id="dream-close" class="dream-btn close">closeAll</button>
+    </div>
+<!--    <script src="https://cdn.jsdelivr.net/gh/uxiaohan/VH-Toast/lib/vh.toast.min.js"></script>-->
+    <script src="./dream-msg.min.js"></script>
+    <script>
+
+
+      var info    = document.getElementById("dream-info");
+      var success = document.getElementById("dream-success");
+      var warning = document.getElementById("dream-warning");
+      var error   = document.getElementById("dream-error");
+      var loading = document.getElementById("dream-loading");
+      var close   = document.getElementById("dream-close");
+
+      info.onclick = function(){
+        Dreamer.info("您有一条新消息待处理，请及时查收！", 2000,function () {
+           alert("我是自定义事件");
+        });
+      }
+
+      success.onclick = function(){
+        Dreamer.success("密码修改成功请重新登录");
+      }
+
+      warning.onclick = function(){
+        Dreamer.warning("系统异常这是一条警告信息！",0);
+      }
+
+      error.onclick = function(){
+        Dreamer.error("添加失败，请稍后再试！", 3000,true);
+      }
+
+      loading.onclick = function(){
+        var closeMsg = Dreamer.loading("加载中，请稍后");
+        setTimeout(function () {
+          closeMsg();
+        }, 4000);
+      }
+
+      close.onclick = function(){
+        Dreamer.destroyAll();
+      }
+
+
+    </script>
+  </body>
+</html>
