@@ -5,12 +5,14 @@
 > 一款简约的基于原生 Javascript 的消息提示插件（带错误提示音）。包含功能，`函数回调`，`自动关闭` ，`手动关闭` ，`错误提示音`，`loading`，`closeAll`等。
 
 
-## 效果截图
+## 演示效果
 
 <img src="./lib/screenshot.png" width="100%" />
 
+> [点击查看演示](https://www.jq22.com/yanshi24011)
 ## 使用说明
 
+html文件中直接引用Js即可调用。
 ```html
  <script src="https://cdn.jsdelivr.net/gh/iGaoWei/Dream-Msg/lib/dream-msg.min.js"></script>
 ```
